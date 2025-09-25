@@ -1,0 +1,7 @@
+project_name           = "prestashop"
+location              = "France Central"
+dns_name_label        = "prestashop-dev-unique"
+mysql_admin_username  = "prestashopadmin"
+mysql_admin_password  = "DevMySQL123!"
+admin_email          = "admin@prestashop.dev"
+admin_password       = "DevAdmin123!"
