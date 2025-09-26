@@ -1,28 +1,28 @@
 # Module Resource Group
 module "resource_group" {
   source = "../../modules/resource_group"
-  
+
   name        = var.project_name
   location    = var.location
   environment = var.environment
 }
 # Module Networking
 module "networking" {
-  source = "../../modules/networking"
-  project_name         = var.project_name
-  resource_group_name  = module.resource_group.resource_group_name
+  source                  = "../../modules/networking"
+  project_name            = var.project_name
+  resource_group_name     = module.resource_group.resource_group_name
   resource_group_location = module.resource_group.resource_group_location
-  environment          = var.environment
+  environment             = var.environment
 }
 # Module Storage Account
 module "storage" {
   source = "../../modules/storage"
-  
-  project_name = var.project_name
+
+  project_name        = var.project_name
   resource_group_name = module.resource_group.resource_group_name
-  location           = module.resource_group.resource_group_location
-  environment        = var.environment
-  share_quota        = 20
+  location            = module.resource_group.resource_group_location
+  environment         = var.environment
+  share_quota         = 20
 }
 # Module PrestaShop Container
 module "database" {
@@ -39,7 +39,7 @@ module "database" {
 }
 # Log Analytics Workspace (requis pour Container Apps)
 module "prestashop_logs_analytics" {
-  source = "../../modules/log_analytics"
+  source              = "../../modules/log_analytics"
   project_name        = var.project_name
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
@@ -47,17 +47,17 @@ module "prestashop_logs_analytics" {
 }
 # Container App Environment
 module "container_app_environment" {
-  source = "../../modules/container_app_environnement"
-  project_name                = var.project_name
-  resource_group_name         = module.resource_group.resource_group_name
-  location                    = module.resource_group.resource_group_location
-  environment                 = var.environment
-  subnet_id                   = module.networking.container_apps_subnet_id
-  log_analytics_workspace_id  = module.prestashop_logs_analytics.id
+  source                     = "../../modules/container_app_environnement"
+  project_name               = var.project_name
+  resource_group_name        = module.resource_group.resource_group_name
+  location                   = module.resource_group.resource_group_location
+  environment                = var.environment
+  subnet_id                  = module.networking.container_apps_subnet_id
+  log_analytics_workspace_id = module.prestashop_logs_analytics.id
 }
 # Container App 
 module "container_app" {
-  source = "../../modules/prestashop"
+  source                       = "../../modules/prestashop"
   project_name                 = var.project_name
   resource_group_name          = module.resource_group.resource_group_name
   location                     = module.resource_group.resource_group_location
@@ -72,5 +72,4 @@ module "container_app" {
   admin_password               = var.admin_password
   storage_account_name         = module.storage.storage_account_name
   database                     = module.database
-  
 }

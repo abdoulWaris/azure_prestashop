@@ -42,6 +42,7 @@ variable "mysql_user_password" {
 variable "admin_email" {
   description = "Email administrateur PrestaShop"
   type        = string
+  sensitive = true
   validation {
     condition     = can(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.admin_email))
     error_message = "Admin email must be a valid email address."
