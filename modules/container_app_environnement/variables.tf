@@ -22,3 +22,14 @@ variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to which the Container App Environment is linked."
   type        = string
 }
+variable "cpu" {
+  description = "The CPU allocation for the Container App Environment."
+  type        = string
+  default     = "0.5"
+  
+}
+variable "memory" {
+  description = "The memory allocation for the Container App Environment."
+  type        = string
+  default     = "1.0Gi"
+}

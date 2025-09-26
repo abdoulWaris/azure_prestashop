@@ -49,3 +49,11 @@ variable "admin_password" {
     type        = string
     sensitive   = true
 }
+variable "storage_account_name" {
+    description = "The name of the Azure Storage Account for PrestaShop."
+    type        = string
+}
+variable "database"{
+  description = "Database module"
+  type        = any
+}
