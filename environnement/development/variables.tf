@@ -22,19 +22,19 @@ variable "dns_name_label" {
   description = "Label DNS unique"
   type        = string
 }
-
-variable "mysql_admin_username" {
+# les variables de connexion à mettre de le tfvars
+variable "mysql_user_username" {
   description = "Nom d'utilisateur MySQL"
   type        = string
  
 }
 
-variable "mysql_admin_password" {
+variable "mysql_user_password" {
   description = "Mot de passe MySQL"
   type        = string
   sensitive   = true
   validation {
-    condition     = length(var.mysql_admin_password) >= 8
+    condition     = length(var.mysql_user_password) >= 8
     error_message = "Admin password must be at least 8 characters long."
   }
 }
@@ -57,3 +57,4 @@ variable "admin_password" {
         error_message = "Admin password must be at least 8 characters long."
     }
 }
+#######################################################################################

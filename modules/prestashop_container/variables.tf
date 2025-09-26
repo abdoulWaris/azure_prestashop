@@ -21,7 +21,7 @@ variable "environment" {
 variable "prestashop_image" {
   description = "Image Docker PrestaShop"
   type        = string
-  default     = "prestashop/prestashop:latest"
+  default     = "prestashop/prestashop:8.1-apache"
 }
 
 variable "cpu" {
@@ -88,4 +88,17 @@ variable "admin_password" {
   description = "Mot de passe administrateur PrestaShop"
   type        = string
   default     = "Admin123!"
+}
+variable "virtual_network_id" {
+  description = "Virtual Network ID"
+  type        = string
+}
+variable "load_balancer_id" {
+  description = "ID du Load Balancer pour lier le container"
+  type        = string  
+}
+variable "instance_count" {
+  description = "Number of PrestaShop instances"
+  type        = number
+  default     = 1  # Pour dev, on commence par 1
 }

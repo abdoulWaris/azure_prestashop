@@ -33,3 +33,17 @@ output "database_connection_string" {
   value       = "mysql://${azurerm_mysql_flexible_server.prestashop_server.administrator_login}@${azurerm_mysql_flexible_server.prestashop_server.fqdn}:3306/${azurerm_mysql_flexible_database.prestashop_db.name}"
   sensitive   = true
 }
+output "mysql_server_id" {
+  description = "ID of the MySQL server"
+  value       = azurerm_mysql_flexible_server.prestashop_server.id
+}
+
+output "mysql_server_name" {
+  description = "Name of the MySQL server"
+  value       = azurerm_mysql_flexible_server.prestashop_server.name
+}
+
+output "mysql_fqdn" {
+  description = "FQDN of the MySQL server"
+  value       = azurerm_mysql_flexible_server.prestashop_server
+}
