@@ -4,20 +4,21 @@ output "container_app_environment_id" {
 }
 output "application_url" {
   description = "URL to access the PrestaShop application"
-  value       = "https://${module.container_app.prestashop.latest_revision_fqdn}"
+  value       = "https://${module.container_app.latest_revision_fqdn}"
 }
 
 output "admin_url" {
   description = "URL to access the PrestaShop admin panel"
-  value       = "https://${module.container_app.prestashop.latest_revision_fqdn}/admin"
+  value       = "https://${module.container_app.latest_revision_fqdn}/admin"
 }
 output "prestashop_fqdn" {
   description = "FQDN of the PrestaShop Container App"
-  value       = module.container_app.prestashop.latest_revision_fqdn
+  value       = module.container_app.latest_revision_fqdn
 }
 output "admin_email_credentials" {
   description = "Identifiants administrateur"
   value = var.admin_email
+  sensitive   = true
   }
   
 output "database_info" {

@@ -66,7 +66,7 @@ module "container_app" {
   prestashop_image             = "prestashop/prestashop:8.1-apache"
   db_password                  = var.mysql_user_password
   db_server                    = module.database.server_fqdn
-  db_name                      = module.database.mysql_database_name
+  db_name                      = module.database.database_name
   db_user                      = module.database.mysql_admin_username
   admin_email                  = var.admin_email
   admin_password               = var.admin_password
