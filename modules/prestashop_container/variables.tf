@@ -102,3 +102,7 @@ variable "instance_count" {
   type        = number
   default     = 1  # Pour dev, on commence par 1
 }
+variable "auto_install" {
+  description = "Auto-install PrestaShop (1 to enable, 0 to disable)"
+  type        = string
+}

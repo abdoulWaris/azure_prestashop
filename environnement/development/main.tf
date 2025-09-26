@@ -79,17 +79,15 @@ resource "azurerm_container_app" "prestashop" {
 
       env {
         name  = "DB_SERVER"
-        value = module.database.server_fqdn
+        secret_name = "db-server"
       }
-      
       env {
         name  = "DB_NAME"
-        value = "prestashop"
+        secret_name = "db-name"
       }
-      
       env {
-        name  = "DB_USER"
-        value = module.database.mysql_admin_username
+        name        = "DB_USER"
+        secret_name = "db-user"
       }
       
       env {
@@ -104,7 +102,7 @@ resource "azurerm_container_app" "prestashop" {
       
       env {
         name  = "PS_INSTALL_AUTO"
-        value = "0"
+        value = "0" # vraiment p
       }
       
       env {
@@ -125,7 +123,7 @@ resource "azurerm_container_app" "prestashop" {
       env {
         name        = "ADMIN_PASSWD"
         secret_name = "admin-password"
-      }
+      } 
     }
   }
 
@@ -154,6 +152,18 @@ resource "azurerm_container_app" "prestashop" {
   secret {
     name  = "admin-password"
     value = var.admin_password
+  }
+secret {
+    name  = "db-server"
+    value = module.database.server_fqdn
+  }
+  secret {
+    name  = "db-user"
+    value = module.database.mysql_admin_username
+  }
+  secret {
+    name  = "db-name"
+    value = module.database.mysql_database_name
   }
 
   tags = {

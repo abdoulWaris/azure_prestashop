@@ -26,7 +26,7 @@ resource "azurerm_container_group" "prestashop_cg" {
       PS_DOMAIN         = "${var.dns_name_label}-${var.environment}.${var.location}.taylerShift.com"
       PS_FOLDER_INSTALL = "install"
       PS_FOLDER_ADMIN   = "admin"
-      PS_INSTALL_AUTO   = "1"
+      PS_INSTALL_AUTO   = var.auto_install
       # Mode développement
       PS_DEMO_MODE  = var.environment == "dev" ? "1" : "0"
       PS_DEV_MODE   = var.environment == "dev" ? "1" : "0"
@@ -41,6 +41,14 @@ resource "azurerm_container_group" "prestashop_cg" {
     secure_environment_variables = {
       DB_PASSWD    = var.db_password
       ADMIN_PASSWD = var.admin_password
+    }
+    volume {
+      name                 = "prestashop-files"
+      mount_path           = "/var/www/html"
+      read_only            = false
+      storage_account_name = var.storage_account_name
+      storage_account_key  = var.storage_account_key
+      share_name           = var.storage_share_name
     }
 
     # NOUVEAU: Liveness probe pour vérifier que le container démarre correctement

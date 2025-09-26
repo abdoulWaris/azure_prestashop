@@ -1,0 +1,6 @@
+project_name           = "prestashop"
+location              = "France Central"
+mysql_user_username   = "prestashopadmin"
+mysql_user_password   = "DevMySQL123!"
+admin_email          = "admin@prestashop.dev"
+admin_password       = "DevAdmin123!"
