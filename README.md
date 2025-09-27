@@ -22,10 +22,57 @@ Ce projet déploie une infrastructure hautement scalable capable de gérer des p
 - **Base de données** : azure mySql database 
 - **Auto-scaling** : Load Balancing, Internet gateway et auto-scaling
 
-## Architecture Overview
-le diagramme initial est réalisé pour Amazon mais se comprends aisement avec Azure
+## ☁️ Architecture Azure
+
+Ce projet déployant une infrastructure cloud basée sur différents services Azure. Voici les composants principaux :
+
+| Composant Azure                  | Description |
+|----------------------------------|-------------|
+| **Azure Resource Group**         | Conteneur logique regroupant toutes les ressources Azure liées à l’environnement. |
+| **Azure Virtual Network (VNet)** | Réseau privé dans Azure permettant la communication sécurisée entre les services. |
+| **Subnets**                      | Segments logiques du VNet, isolant les ressources (ex. bases de données, apps). |
+| **Azure Container Apps**         | Service PaaS pour exécuter des microservices ou applications conteneurisées sans gérer l’infrastructure. |
+| **Azure Container Instances**    | Déploie des conteneurs de manière isolée, ici utilisé pour héberger l’application PrestaShop. |
+| **Azure Database for MySQL**     | Base de données relationnelle managée utilisée pour stocker les données de PrestaShop. |
+| **Azure Storage Account**        | Fournit un stockage persistant (Blob, fichiers, etc.), utilisé par l’application pour sauvegarder fichiers ou logs. |
+| **Azure Log Analytics Workspace**| Centralise les logs et métriques des ressources pour la supervision et le diagnostic. |
+
+## 🧱 Architecture visuelle
+
 ## Architectural Diagram
-![Alt text](https://github.com/abdoulWaris/Projet_prestashop_terraform/blob/main/Documentation/architecture_aws_prestashop.drawio.png)
+                               +---------------------+
+                               |  Azure Resource Group|
+                               +----------+----------+
+                                          |
+         +--------------------------------+----------------------------------+
+         |                                |                                  |
+         v                                v                                  v
++---------------------+        +---------------------+            +----------------------+
+| Azure Virtual Network|        | Azure Container Apps|            | Azure Container Instance |
++----------+----------+        +----------+----------+            +-----------+----------+
+           |                              |                                     |
+           v                              v                                     v
++---------------------+        +---------------------+            +----------------------+
+| Azure Subnets       |        | PrestaShop App      |            | PrestaShop Container  |
++---------------------+        +---------------------+            +----------------------+
+
+         |
+         v
++------------------------+
+| Azure Database (MySQL) |
++------------------------+
+
+         |
+         v
++------------------------+
+| Azure Storage Account  |
++------------------------+
+
+         |
+         v
++------------------------+
+| Azure Log Analytics    |
++------------------------+
 
 ### Explication
 ### 1. **VPC Module**
@@ -35,7 +82,6 @@ Le module VPC se charge du reséau de l'infrastructure:
 - 2 Sous-réseaux publics (10.0.0.0/24 et 10.0.1.0/24) pour la passerelle NAT et l'ALB.
 - 4 Sous-réseaux privés dont 2 pour l'application (10.0.2.0/24, 10.0.3.0/24) et 2 pou la base de données (10.0.4.0/24, 10.0.5.0/24).
 - Inclus la passerelle NAT pour l'accès Internet sortant depuis des sous-réseaux privés.
-![Screenshot_2](https://github.com/username/test/assets/108919293/d8206e8b-5c62-49f9-94e4-19b9d9d5c6e6)
 ### 2. **Web Tier**
 - EC2 instances pour l'hébergement de application.
 - Elastic Load Balancer (ELB) pour distribuer le traffic à travers multiples instances.
