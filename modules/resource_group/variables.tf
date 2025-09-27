@@ -2,7 +2,7 @@
 # Variables #
 #############
 variable "name" {
-  description = "Nom du groupe de ressources"
+  description = "Resource Group name"
   type        = string
 }
 
@@ -14,10 +14,4 @@ variable "location" {
 variable "environment" {
   description = "Environnement (dev, staging, prod)"
   type        = string
-}
-
-variable "tags" {
-  description = "Tags à appliquer aux ressources"
-  type        = map(string)
-  default     = {}
 }

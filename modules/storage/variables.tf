@@ -1,37 +1,37 @@
 variable "project_name" {
-  description = "Nom du projet"
+  description = "Project name"
   type        = string
 }
 
 variable "resource_group_name" {
-  description = "Nom du groupe de ressources"
+  description = "Resource Group name"
   type        = string
 }
 
 variable "location" {
-  description = "Région Azure"
+  description = "Azure Region"
   type        = string
 }
 
 variable "environment" {
-  description = "Environnement"
+  description = "Environment"
   type        = string
 }
 
 variable "account_tier" {
-  description = "Tier du compte de stockage"
+  description = "Storage account tier"
   type        = string
   default     = "Standard"
 }
 
 variable "replication_type" {
-  description = "Type de réplication"
+  description = "Replication type"
   type        = string
-  default     = "LRS"
+  default     = "LRS" # Locally-redundant storage France
 }
 
 variable "share_quota" {
-  description = "Quota du partage en GB"
+  description = "Share quota in GB"
   type        = number
   default     = 50
 }

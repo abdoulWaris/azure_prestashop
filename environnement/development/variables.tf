@@ -24,13 +24,13 @@ variable "dns_name_label" {
 }
 # les variables de connexion à mettre de le tfvars
 variable "mysql_user_username" {
-  description = "Nom d'utilisateur MySQL"
+  description = "MySQL username"
   type        = string
  
 }
 
 variable "mysql_user_password" {
-  description = "Mot de passe MySQL"
+  description = "MySQL password"
   type        = string
   sensitive   = true
   validation {
@@ -40,7 +40,7 @@ variable "mysql_user_password" {
 }
 
 variable "admin_email" {
-  description = "Email administrateur PrestaShop"
+  description = "PrestaShop Admin email"
   type        = string
   sensitive = true
   validation {

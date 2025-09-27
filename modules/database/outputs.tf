@@ -1,29 +1,29 @@
 output "server_fqdn" {
-  description = "FQDN du serveur MySQL"
+  description = "FQDN of MySQL server"
   value       = azurerm_mysql_flexible_server.prestashop_server.fqdn
 }
 
 output "database_name" {
-  description = "Nom de la base de données"
+  description = "Database name"
   value       = azurerm_mysql_flexible_database.prestashop_db.name
 }
 
 output "admin_username" {
-  description = "Nom d'utilisateur administrateur"
+  description = "Admin username for MySQL"
   value       = var.admin_username
 }
 
 output "server_name" {
-  description = "Nom du serveur MySQL"
+  description = "MySQL server name"
   value       = azurerm_mysql_flexible_server.prestashop_server.name
 }
 output "server_id" {
-  description = "ID du serveur MySQL"
+  description = "ID of MySQL server"
   value       = azurerm_mysql_flexible_server.prestashop_server.id
   
 }
 output "mysql_admin_username" {
-  description = "Administrator username for the MySQL server"
+  description = "Admin username for the MySQL server"
   value       = azurerm_mysql_flexible_server.prestashop_server.administrator_login
   sensitive   = true
 }

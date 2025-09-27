@@ -79,7 +79,7 @@ resource "azurerm_container_app" "prestashop" {
     }
   }
 
-  # Secrets injectés depuis variables
+  # Secrets injectés depuis les variables
   secret {
     name  = "db-password"
     value = var.db_password
