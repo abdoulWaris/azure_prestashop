@@ -21,7 +21,7 @@ variable "container_app_environment_id" {
 variable "prestashop_image" {
     description = "The Docker image for the PrestaShop application."
     type        = string
-    default     = "prestashop/prestashop:latest"
+    default     = "prestashop/prestashop:8.1-apache"
 }
 variable "db_password" {
     description = "The password for the PrestaShop database user."
