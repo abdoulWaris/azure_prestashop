@@ -35,7 +35,7 @@ Le module VPC se charge du reséau de l'infrastructure:
 - 2 Sous-réseaux publics (10.0.0.0/24 et 10.0.1.0/24) pour la passerelle NAT et l'ALB.
 - 4 Sous-réseaux privés dont 2 pour l'application (10.0.2.0/24, 10.0.3.0/24) et 2 pou la base de données (10.0.4.0/24, 10.0.5.0/24).
 - Inclus la passerelle NAT pour l'accès Internet sortant depuis des sous-réseaux privés.
-
+![Screenshot_2](https://github.com/username/test/assets/108919293/d8206e8b-5c62-49f9-94e4-19b9d9d5c6e6)
 ### 2. **Web Tier**
 - EC2 instances pour l'hébergement de application.
 - Elastic Load Balancer (ELB) pour distribuer le traffic à travers multiples instances.
@@ -140,3 +140,6 @@ terraform apply
 ### Suppression du dossier install
 Pour achever l'intall vous devrez vous rendre sur le portal azure, dans compte de stockege puis dans partage de fichier vous trouverez le volume persistez avec le dosier install , vous le supprimez et renommé
 le dossier
+## Resultat 
+A la fin vous avez votre page prestashop prête
+![Capture d'écran](./docs/prestashop.png)
