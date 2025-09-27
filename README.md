@@ -40,6 +40,7 @@ Ce projet déployant une infrastructure cloud basée sur différents services Az
 ## 🧱 Architecture visuelle
 
 ## Architectural Diagram
+```bash
                                +---------------------+
                                |  Azure Resource Group|
                                +----------+----------+
@@ -73,7 +74,7 @@ Ce projet déployant une infrastructure cloud basée sur différents services Az
 +------------------------+
 | Azure Log Analytics    |
 +------------------------+
-
+```
 ### Explication
 ### 1. **VPC Module**
 Le module VPC se charge du reséau de l'infrastructure:
@@ -131,6 +132,7 @@ az login
 az account show
 ```
 ## Organisation du code
+```bash
 azure_prestashop/
 ├── docs/                         # Documentation
 ├── environments/                 # Configuration par environnement
@@ -149,7 +151,7 @@ azure_prestashop/
 │
 ├── scripts/                       # Scripts de déploiement
 └── README.md                      # Documentation principale
-
+```
 
 ### 2. Clone the Repository
 Download the Terraform configuration files:
