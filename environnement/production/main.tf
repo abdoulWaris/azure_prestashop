@@ -34,29 +34,44 @@ module "database" {
   environment         = var.environment
   admin_username      = var.mysql_user_username
   admin_password      = var.mysql_user_password
-  sku_name            = "B_Standard_B1ms"
-  storage_gb          = 20
+  sku_name            = var.sku_name
+  storage_gb          = var.storage_gb
+}
+# Log Analytics Workspace (requis pour Container Apps)
+module "prestashop_logs_analytics" {
+  source              = "../../modules/log_analytics"
+  project_name        = var.project_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.resource_group_location
+  environment         = var.environment
+  retention_in_days   = var.retention_in_days
+}
+# Container App Environment
+module "container_app_environment" {
+  source                     = "../../modules/container_app_environnement"
+  project_name               = var.project_name
+  resource_group_name        = module.resource_group.resource_group_name
+  location                   = module.resource_group.resource_group_location
+  environment                = var.environment
+  subnet_id                  = module.networking.container_apps_subnet_id
+  log_analytics_workspace_id = module.prestashop_logs_analytics.id
 }
 # PrestaShop Application
-# Info: lors d'un second deploiement modiifer PS_AUTO_INSTALL à 1
-module "prestashop" {
-  source               = "../../modules/prestashop_container"
-  project_name         = var.project_name
-  environment          = var.environment
-  resource_group_name  = module.resource_group.resource_group_name
-  location             = module.resource_group.resource_group_location
-  auto_install         = var.auto_install
-  load_balancer_id     = module.networking.load_balancer_id
-  instance_count       = "1"
-  db_server            = module.database.mysql_fqdn
-  db_name              = "prestashop"
-  db_user              = module.database.mysql_admin_username
-  db_password          = var.db_password
-  admin_email          = var.admin_email
-  admin_password       = var.admin_password
-  virtual_network_id   = module.networking.virtual_network_id
-  storage_share_name   = module.storage.storage_share_name
-  storage_account_key  = module.storage.storage_account_key
-  storage_account_name = module.storage.storage_account_name
-  dns_name_label       = module.networking.load_balancer_ip
+# Container App 
+module "container_app" {
+  source                       = "../../modules/prestashop"
+  project_name                 = var.project_name
+  resource_group_name          = module.resource_group.resource_group_name
+  location                     = module.resource_group.resource_group_location
+  environment                  = var.environment
+  container_app_environment_id = module.container_app_environment.Container_app_env_id
+  prestashop_image             = "prestashop/prestashop:8.1-apache"
+  db_password                  = var.mysql_user_password
+  db_server                    = module.database.server_fqdn
+  db_name                      = module.database.database_name
+  db_user                      = module.database.mysql_admin_username
+  admin_email                  = var.admin_email
+  admin_password               = var.admin_password
+  storage_account_name         = module.storage.storage_account_name
+  database                     = module.database
 }

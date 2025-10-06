@@ -61,3 +61,18 @@ variable "auto_install" {
   type        = string
   default     = "1"
 }
+variable "sku_name" {
+  description = "SKU for MySQL server"
+  type        = string
+  default     = "Standard_E2ds_v4" 
+}
+variable "storage_gb" {
+  description = "Storage size in GB"
+  type        = number
+  default     = 20
+}
+variable "retention_in_days" {
+  description = "The number of days to retain data in the Log Analytics workspace."
+  type        = number
+  default     = 30
+}
