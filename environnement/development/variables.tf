@@ -58,4 +58,20 @@ variable "admin_password" {
         error_message = "Admin password must be at least 8 characters long."
     }
 }
+variable "retention_in_days" {
+  description = "The number of days to retain data in the Log Analytics workspace."
+  type        = number
+  default     = 7
+}
+variable "storage_gb" {
+  description = "Storage size in GB"
+  type        = number
+  default     = 10
+}
+variable "sku_name" {
+  description = "SKU for MySQL server"
+  type        = string
+  default     = "B_Standard_B1ms"
+  
+}
 #######################################################################################

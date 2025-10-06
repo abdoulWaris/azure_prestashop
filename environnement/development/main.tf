@@ -34,8 +34,8 @@ module "database" {
   environment         = var.environment
   admin_username      = var.mysql_user_username
   admin_password      = var.mysql_user_password
-  sku_name            = "B_Standard_B1ms"
-  storage_gb          = 20
+  sku_name            = var.sku_name
+  storage_gb          = var.storage_gb
 }
 # Log Analytics Workspace (requis pour Container Apps)
 module "prestashop_logs_analytics" {
@@ -44,6 +44,7 @@ module "prestashop_logs_analytics" {
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
   environment         = var.environment
+  retention_in_days   = var.retention_in_days
 }
 # Container App Environment
 module "container_app_environment" {

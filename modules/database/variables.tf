@@ -53,3 +53,9 @@ variable "database_name" {
   type        = string
   default     = "prestashop"
 }
+variable "storage_gb" {
+  description = "Storage size in GB"
+  type        = number
+  default     = 20
+  
+}

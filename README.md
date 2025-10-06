@@ -43,28 +43,28 @@ Ce projet déployant une infrastructure cloud basée sur différents services Az
 
 ```bash
 ┌─────────────────────────────────────────────────────────────┐
-│                    Azure Subscription                        │
+│                    Azure Subscription                       │
 │  ┌───────────────────────────────────────────────────────┐  │
 │  │              Resource Group: prestashop-{env}-rg      │  │
-│  │                                                        │  │
-│  │  ┌──────────────┐         ┌──────────────────────┐   │  │
-│  │  │   VNet       │────────▶│  Container App Env   │   │  │
+│  │                                                       │  │
+│  │  ┌──────────────┐         ┌──────────────────────┐    │  │
+│  │  │   VNet       │───────▶│  Container App Env   │   │  │
 │  │  │ 10.0.0.0/16  │         │  + Log Analytics     │   │  │
 │  │  └──────────────┘         └──────────┬───────────┘   │  │
-│  │         │                              │               │  │
-│  │         │                              ▼               │  │
+│  │         │                            │               │  │
+│  │         │                              ▼             │  │
 │  │  ┌──────▼──────────┐         ┌──────────────────┐    │  │
 │  │  │   Subnets       │         │  Container App   │    │  │
 │  │  │  - Public       │         │   PrestaShop     │    │  │
 │  │  │  - Private      │         │  (Auto-scaling)  │    │  │
 │  │  └─────────────────┘         └────────┬─────────┘    │  │
-│  │                                        │              │  │
+│  │                                       │              │  │
 │  │  ┌──────────────────┐                 │              │  │
-│  │  │  MySQL Flexible  │◀────────────────┘              │  │
+│  │  │  MySQL Flexible  │◀───────────────┘              │  │
 │  │  │     Server       │                                │  │
 │  │  │  (Private subnet)│                                │  │
 │  │  └──────────────────┘                                │  │
-│  │                                                        │  │
+│  │                                                      │  │
 │  │  ┌──────────────────┐                                │  │
 │  │  │ Storage Account  │                                │  │
 │  │  │  - Azure Files   │                                │  │
