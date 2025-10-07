@@ -57,3 +57,13 @@ variable "database"{
   description = "Database module"
   type        = any
 }
+variable "cpu" {
+  description = "The number of CPU cores for the PrestaShop container."
+  type        = number
+  default     = 0.75
+}
+variable "memory" {
+  description = "The amount of memory (in GB) for the PrestaShop container."
+  type        = number
+  default     = 1.5
+}

@@ -74,4 +74,24 @@ variable "sku_name" {
   default     = "B_Standard_B1ms"
   
 }
+variable "cpu" {
+  description = "The number of CPU cores for the PrestaShop container."
+  type        = number
+  default     = 0.75
+  validation {
+    condition     = var.cpu > 0
+    error_message = "The amount of vCPU to allocate to the container. Possible values include 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, and 2.0."
+  }
+  
+}
+variable "memory" {
+  description = "The amount of memory (in GB) for the PrestaShop container."
+  type        = number
+  default     = 1.5
+  validation {
+    condition     = var.memory >= 0.5
+    error_message = "The amount of memory to allocate to the container. Possible values include 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, and 4.0."
+  }
+  
+}
 #######################################################################################

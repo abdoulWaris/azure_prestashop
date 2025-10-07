@@ -11,8 +11,8 @@ resource "azurerm_container_app" "prestashop" {
     container {
       name   = "prestashop"
       image  = var.prestashop_image
-      cpu    = "0.75"
-      memory = "1.5Gi"
+      cpu    = var.cpu
+      memory = "${var.memory}Gi"
 
       env {
         name        = "DB_SERVER"

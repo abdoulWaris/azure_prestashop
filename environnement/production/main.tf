@@ -64,7 +64,6 @@ module "container_app" {
   location                     = module.resource_group.resource_group_location
   environment                  = var.environment
   container_app_environment_id = module.container_app_environment.Container_app_env_id
-  prestashop_image             = "prestashop/prestashop:8.1-apache"
   db_password                  = var.mysql_user_password
   db_server                    = module.database.server_fqdn
   db_name                      = module.database.database_name
@@ -72,5 +71,7 @@ module "container_app" {
   admin_email                  = var.admin_email
   admin_password               = var.admin_password
   storage_account_name         = module.storage.storage_account_name
-  database                     = module.database
+  database                     = module.database 
+  cpu                          = var.cpu
+  memory                       = var.memory
 }

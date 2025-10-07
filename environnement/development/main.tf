@@ -73,4 +73,6 @@ module "container_app" {
   admin_password               = var.admin_password
   storage_account_name         = module.storage.storage_account_name
   database                     = module.database
+  cpu                           = var.cpu
+  memory                        = var.memory
 }
