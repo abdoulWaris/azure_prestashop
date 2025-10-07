@@ -21,12 +21,3 @@ resource "azurerm_storage_share" "prestashop" {
   storage_account_name = azurerm_storage_account.prestashop_storage.name
   quota                = var.share_quota
 }
-
-resource "azurerm_container_app_environment_storage" "prestashop_storage" {
-  name                         = "${var.project_name}-${var.environment}-appstorage"
-  container_app_environment_id = var.container_app_environment_id
-  account_name                 = azurerm_storage_account.prestashop_storage.name
-  share_name                   = azurerm_storage_share.prestashop.name
-  access_key                   = azurerm_storage_account.prestashop_storage.primary_access_key
-  access_mode                  = "ReadWrite"
-}

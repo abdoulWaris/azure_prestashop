@@ -7,11 +7,7 @@ resource "azurerm_container_app" "prestashop" {
   template {
     min_replicas = 1
     max_replicas = 1
-    volume {
-      name         = "prestashop-files"
-      storage_type = "AzureFile"
-      storage_name = var.environment_storage_name
-    }
+    
     container {
       name   = "prestashop"
       image  = var.prestashop_image
@@ -59,10 +55,6 @@ resource "azurerm_container_app" "prestashop" {
       env {
         name        = "ADMIN_PASSWD"
         secret_name = "admin-password"
-      }
-      volume_mounts {
-        name = "prestashop-files"
-        path = "/var/www/html"
       }
     }
 
