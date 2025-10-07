@@ -45,5 +45,5 @@ output "mysql_server_name" {
 
 output "mysql_fqdn" {
   description = "FQDN of the MySQL server"
-  value       = azurerm_mysql_flexible_server.prestashop_server
+  value       = azurerm_mysql_flexible_server.prestashop_server.fqdn
 }

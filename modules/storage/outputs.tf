@@ -16,7 +16,3 @@ output "storage_account_key" {
   description = "Clé du compte de stockage"
   value       = azurerm_storage_account.prestashop_storage.primary_access_key
 }
-output "environment_storage_name" {
-  description = "The name of the Azure container app Storage name for PrestaShop."
-  value       = azurerm_container_app_environment_storage.prestashop_storage.name
-}

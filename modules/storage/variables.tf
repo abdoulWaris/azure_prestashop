@@ -35,7 +35,3 @@ variable "share_quota" {
   type        = number
   default     = 50
 }
-variable "container_app_environment_id" {
-  description = "The ID of the Container App Environment to which the Log Analytics workspace is linked."
-  type        = string
-}

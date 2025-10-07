@@ -28,7 +28,7 @@ output "database_info" {
     database_name = module.database.database_name
     fqdn = module.database.mysql_fqdn
   }
-  sensitive = true
+  sensitive = false
 }
 output "database_server_name_info" {
   description = "Database server name information"
@@ -41,9 +41,12 @@ output "database_name_info" {
 output "database_fqdn_info" {
   description = "Database FQDN information"
   value =  module.database.mysql_fqdn
-  sensitive = true
 }
 output "resource_group_name" {
   description = "Nom du groupe de ressources"
   value       = module.resource_group.resource_group_name
+}
+output "resource_group_location" {
+  description = "Nom du groupe de ressources"
+  value       = module.resource_group.resource_group_location
 }
