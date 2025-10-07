@@ -345,3 +345,5 @@ az vm list-usage --location "France Central" --output table
 
 A la fin vous avez votre page prestashop prête
 ![Capture d'écran](./docs/prestashop.png)
+## Estimation
+📄 [Voir l'estimation détaillée](./docs/estimation.md)

@@ -57,7 +57,6 @@ module "container_app_environment" {
   log_analytics_workspace_id = module.prestashop_logs_analytics.id
 }
 # PrestaShop Application
-# Container App 
 module "container_app" {
   source                       = "../../modules/prestashop"
   project_name                 = var.project_name
