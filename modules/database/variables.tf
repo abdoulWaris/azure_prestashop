@@ -39,7 +39,6 @@ variable "sku_name" {
 variable "storage_gb" {
   description = "Storage size in GB"
   type        = number
-  default     = 20
 }
 
 variable "backup_retention_days" {

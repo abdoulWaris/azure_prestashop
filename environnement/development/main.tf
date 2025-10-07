@@ -23,6 +23,7 @@ module "storage" {
   location            = module.resource_group.resource_group_location
   environment         = var.environment
   share_quota         = 20
+  container_app_environment_id = module.container_app_environment.container_app_env_id
 }
 # Module PrestaShop Container
 module "database" {
@@ -63,7 +64,7 @@ module "container_app" {
   resource_group_name          = module.resource_group.resource_group_name
   location                     = module.resource_group.resource_group_location
   environment                  = var.environment
-  container_app_environment_id = module.container_app_environment.Container_app_env_id
+  container_app_environment_id = module.container_app_environment.container_app_env_id
   prestashop_image             = "prestashop/prestashop:8.1-apache"
   db_password                  = var.mysql_user_password
   db_server                    = module.database.server_fqdn
@@ -71,8 +72,9 @@ module "container_app" {
   db_user                      = module.database.mysql_admin_username
   admin_email                  = var.admin_email
   admin_password               = var.admin_password
-  storage_account_name         = module.storage.storage_account_name
+  environment_storage_name     = module.storage.environment_storage_name
   database                     = module.database
   cpu                           = var.cpu
   memory                        = var.memory
+  depends_on                    = [module.container_app_environment]
 }

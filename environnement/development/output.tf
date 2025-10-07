@@ -1,6 +1,6 @@
 output "container_app_environment_id" {
   description = "ID of the Container App Environment"
-  value       = module.container_app_environment.Container_app_env_id
+  value       = module.container_app_environment.container_app_env_id
 }
 output "application_url" {
   description = "URL to access the PrestaShop application"
@@ -28,7 +28,7 @@ output "database_info" {
     database_name = module.database.database_name
     fqdn = module.database.mysql_fqdn
   }
-  sensitive = false
+  sensitive = true
 }
 output "database_server_name_info" {
   description = "Database server name information"
@@ -41,6 +41,7 @@ output "database_name_info" {
 output "database_fqdn_info" {
   description = "Database FQDN information"
   value =  module.database.mysql_fqdn
+  sensitive = true
 }
 output "resource_group_name" {
   description = "Nom du groupe de ressources"

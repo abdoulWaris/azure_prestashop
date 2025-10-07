@@ -74,7 +74,7 @@ variable "storage_gb" {
 variable "retention_in_days" {
   description = "The number of days to retain data in the Log Analytics workspace."
   type        = number
-  default     = 30
+  default     = 90
 }
 
 variable "cpu" {

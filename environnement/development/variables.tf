@@ -61,12 +61,12 @@ variable "admin_password" {
 variable "retention_in_days" {
   description = "The number of days to retain data in the Log Analytics workspace."
   type        = number
-  default     = 7
+  default     = 30
 }
 variable "storage_gb" {
   description = "Storage size in GB"
   type        = number
-  default     = 10
+  default     = 20
 }
 variable "sku_name" {
   description = "SKU for MySQL server"
