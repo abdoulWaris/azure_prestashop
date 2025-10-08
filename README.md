@@ -284,17 +284,13 @@ prestashop_url = "lien du site deployé"
 admin_url = "lien du site deployé/admin"
 database_server = "url de votre server de base de donnée"
 resource_group_name = "le nom du ressource groupe"
+terraform output database_fqdn_info
+# Ou Pour avoir les valeurs de la Base
+terraform output database_fqdn_info # Copier la valeur fqdn
 ```
 ### 5. 🔧 Post-installation
-⚠️ Suppression du dossier install (OBLIGATOIRE)
 PrestaShop nécessite la suppression du dossier /install après l'installation pour des raisons de sécurité.
-Méthode 1 : Via le Portail Azure (Recommandé)
-
-Accéder au portail : https://portal.azure.com
-Rechercher votre compte de stockage (ex: exempleCompteStockage20J3)
-Naviguer : Data storage > File shares > prestashop-files
-Supprimer le dossier install
-Rafraîchir votre site PrestaShop
+📄 [Voir l'estimation détaillée](./docs/postInstall.md.md)
 
 ### 6. 🔒 Sécurisation post-installation
 
@@ -311,7 +307,7 @@ Rafraîchir votre site PrestaShop
 ### 6. Destruction de l'infrastructure
 Selon l'environnement choisi:
 ```bash
-cd environments/developpement ou production
+cd environment/developpement ou production
 
 # Prévisualiser la destruction
 terraform plan -destroy -var-file="terraform.tfvars"
